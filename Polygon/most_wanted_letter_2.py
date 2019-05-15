@@ -1,30 +1,34 @@
-#!/home/porosya/.local/share/virtualenvs/checkio-VEsvC6M1/bin/checkio --domain=py run most-wanted-letter-2
+#!/home/porosya/.local/share/virtualenvs/checkio-VEsvC6M1/bin/checkio --domain=py check most-wanted-letter-2
 
 # https://py.checkio.org/mission/most-wanted-letter-2/
 
 # You are given a text, which contains different English letters and punctuation marks.    You should find the most frequent letter in the text. The letter returned must be in lowercase.
 # During the search for the most wanted letter, casing doesn’t matter,    "A" == "a".    Make sure you don’t count in the punctuation marks, digits and whitespaces, just letters.
-# 
+#
 # If you havetwo or more letters occurring the same number of times,    then return all of them as a list.    For example -- "Hello, Evan" should return ['e', 'l'].
-# 
+#
 # Input:A text for analysis as a string.
-# 
+#
 # Output:The list of the most frequent letters in lowercase.
-# 
+#
 # Precondition:
 # A text contains only ASCII symbols.
 # 0 < len(text) ≤ 105
-# 
-# 
+#
+#
 # END_DESC
 
-def most_wanted(text: str) -> str:
 
-    #replace this for solution
-    return ['a']
+def most_wanted(text: str) -> str:
+    letters_list = dict()
+    for letter in text.lower():
+        if letter.isalpha():
+            letters_list[letter] = letters_list.get(letter, 0) + 1
+    return [letter for letter, freq in letters_list.items() if freq == max(letters_list.values())]
+
 
 if __name__ == '__main__':
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert sorted(most_wanted("Hello World!")) == ["l"], "Hello test"
     assert sorted(most_wanted("How do you do?")) == ["o"], "O is most wanted"
     assert sorted(most_wanted("One")) == ["e", "n", "o"], "All letter only once."
