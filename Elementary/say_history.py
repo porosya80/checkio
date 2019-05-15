@@ -1,4 +1,4 @@
-#!/home/porosya/.local/share/virtualenvs/checkio-VEsvC6M1/bin/checkio --domain=py run say-history
+#!/home/porosya/.local/share/virtualenvs/checkio-VEsvC6M1/bin/checkio --domain=py check say-history
 
 # https://py.checkio.org/mission/say-history/
 
