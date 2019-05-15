@@ -1,0 +1,1 @@
+text[text.find(begin):text.rfind(end)]

@@ -6,18 +6,19 @@
 # - the output format should be 'hh:mm'
 # - if the output hour is less than 10 - write '0' before it. For example: '09:05'
 # Here you can find some useful information about the12-hour format.
-# 
-# 
-# 
+#
+#
+#
 # Input:Time in a 12-hour format (as a string).
-# 
+#
 # Output:Time in a 24-hour format (as a string).
-# 
+#
 # Precondition:
 # '00:00'<= time<= '23:59'
-# 
-# 
+#
+#
 # END_DESC
+
 
 def time_converter(time):
     digits, dn = time.split()
@@ -26,15 +27,15 @@ def time_converter(time):
         clock[0] = clock[0]+12
     if dn[0] == 'a' and clock[0] == 12:
         clock[0] = 0
-        
-    return ':'.join([str(x) if len(str(x)) > 1 else "0" +str(x) for x in clock])
+
+    return ':'.join([str(x) if len(str(x)) > 1 else "0" + str(x) for x in clock])
 
 
 if __name__ == '__main__':
     print("Example:")
     print(time_converter('12:30 p.m.'))
 
-    #These "asserts" using only for self-checking and not necessary for auto-testing
+    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert time_converter('12:30 p.m.') == '12:30'
     assert time_converter('9:00 a.m.') == '09:00'
     assert time_converter('11:15 p.m.') == '23:15'
