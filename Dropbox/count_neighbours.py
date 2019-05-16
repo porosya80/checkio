@@ -1,4 +1,4 @@
-#!/home/porosya/.local/share/virtualenvs/checkio-VEsvC6M1/bin/checkio --domain=py run count-neighbours
+#!/home/porosya/.local/share/virtualenvs/checkio-VEsvC6M1/bin/checkio --domain=py check count-neighbours
 
 # https://py.checkio.org/mission/count-neighbours/
 
@@ -36,8 +36,26 @@
 # END_DESC
 
 
+def in_bounds(grid, row, col):
+    if row < 0 or col < 0:
+        return False
+    if row > len(grid)-1 or col > len(grid[0])-1:
+        return False
+    return True
+
+
 def count_neighbours(grid, row, col):
-    return 0
+    result = 0
+    for y_offset in (-1, 0, 1):
+        for x_offset in (-1, 0, 1):
+            row_x = row+x_offset
+            col_y = col+y_offset
+            if not (row_x == row and col_y == col):
+                if in_bounds(grid, row_x, col_y):
+                    if grid[row_x][col_y] == 1:
+                        result += 1
+
+    return result
 
 
 if __name__ == '__main__':
